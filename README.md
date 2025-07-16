@@ -48,3 +48,48 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+
+
+
+
+
+## How to do the splash screen
+1. import usetstate and useEfeect and also ActivityIndicator
+
+(The ActivityIndicator is a built-in React Native component that shows a loading spinner (a circular progress animation). It's commonly used to let users know that something is loading — like:
+
+a splash screen delay,)
+
+2. create a useState for the loading state so the splash screen shows 
+
+const [isLoading, setIsLoading] = useState(true);
+
+3. now the use effect function (
+
+    
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500); // Show splash screen for 2.5 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+)
+
+4. set the if statmennt 
+
+ if (isLoading) {
+    return (
+      <View className="flex-1 justify-center items-center bg-green-600">
+        <Image
+          source={require('../assets/images/mart.png')}
+          className="w-32 h-32 rounded-full"
+        />
+        <!-- optional to add the name  -->
+        <Text className="text-white text-xl font-bold mt-4">Shopping Mall</Text> 
+        <ActivityIndicator size="large" color="#ffffff" className="mt-6" />
+      </View>
+    );
+  }
+
